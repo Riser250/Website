@@ -1,55 +1,50 @@
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
+body {
+    font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f0f0f0;
+    height: 100vh;
+    background-color: #f4f4f4;
+    margin: 0;
 }
 
 #game-container {
-    width: 600px;
-    height: 400px;
     position: relative;
-    background-color: #a9cfe2;
+    width: 800px;
+    height: 400px;
+    background-color: #e0e0e0;
     border: 2px solid #333;
-    overflow: hidden;
 }
 
 .player {
     position: absolute;
-    width: 50px;
-    height: 50px;
-    border-radius: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
 }
 
 #fire {
-    background-color: #ff4500;
-    top: 150px;
-    left: 50px;
+    background-color: red;
 }
 
 #water {
-    background-color: #00bfff;
-    top: 150px;
-    left: 500px;
+    background-color: blue;
 }
 
 .goal {
     position: absolute;
     width: 50px;
     height: 50px;
-    background-color: #32cd32;
-    border-radius: 10px;
+    background-color: yellow;
+    opacity: 0.7;
 }
 
 #goal-fire {
-    top: 300px;
-    left: 50px;
+    top: 20px;
+    left: 20px;
 }
 
 #goal-water {
-    top: 300px;
-    left: 500px;
+    bottom: 20px;
+    right: 20px;
 }
