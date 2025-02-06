@@ -17,6 +17,12 @@ const fireStartY = 50;  // Fire starts 50px from the top
 const waterStartX = gameWidth - 90; // Water starts 90px from the right
 const waterStartY = gameHeight - 90; // Water starts 90px from the bottom
 
+// Adjust goal positions to move the goals away from the spawn points
+const goalFireX = 300;  // Fire's goal moves 300px to the right from the left
+const goalFireY = 200;  // Fire's goal moves 200px down from the top
+const goalWaterX = gameWidth - 300; // Water's goal moves 300px to the left from the right
+const goalWaterY = 200;  // Water's goal moves 200px up from the bottom
+
 function checkWin(player, goal, playerName) {
     const playerRect = player.getBoundingClientRect();
     const goalRect = goal.getBoundingClientRect();
@@ -130,3 +136,9 @@ document.getElementById('fire').style.top = fireStartY + 'px';
 document.getElementById('fire').style.left = fireStartX + 'px';
 document.getElementById('water').style.top = waterStartY + 'px';
 document.getElementById('water').style.left = waterStartX + 'px';
+
+// Initial goal positions
+document.getElementById('goal-fire').style.top = goalFireY + 'px';
+document.getElementById('goal-fire').style.left = goalFireX + 'px';
+document.getElementById('goal-water').style.top = goalWaterY + 'px';
+document.getElementById('goal-water').style.left = goalWaterX + 'px';
