@@ -11,6 +11,12 @@ const gameContainer = document.getElementById('game-container');
 const gameWidth = gameContainer.offsetWidth;
 const gameHeight = gameContainer.offsetHeight;
 
+// Adjust spawn points to move the players away from the edges
+const fireStartX = 50;  // Fire starts 50px from the left
+const fireStartY = 50;  // Fire starts 50px from the top
+const waterStartX = gameWidth - 90; // Water starts 90px from the right
+const waterStartY = gameHeight - 90; // Water starts 90px from the bottom
+
 function checkWin(player, goal, playerName) {
     const playerRect = player.getBoundingClientRect();
     const goalRect = goal.getBoundingClientRect();
@@ -109,11 +115,18 @@ function showRestartButton() {
 function restartGame() {
     fireWins = false;
     waterWins = false;
-    document.getElementById('fire').style.top = '0px';
-    document.getElementById('fire').style.left = '0px';
-    document.getElementById('water').style.top = '360px';
-    document.getElementById('water').style.left = '760px';
+    // Reset positions of the players to their new spawn points
+    document.getElementById('fire').style.top = fireStartY + 'px';
+    document.getElementById('fire').style.left = fireStartX + 'px';
+    document.getElementById('water').style.top = waterStartY + 'px';
+    document.getElementById('water').style.left = waterStartX + 'px';
     document.getElementById('status').textContent = 'Welcome to the Fire and Water Game!';
     document.getElementById('status').classList.remove('winner');
     document.getElementById('restart-btn').style.display = 'none';
 }
+
+// Initial spawn positions
+document.getElementById('fire').style.top = fireStartY + 'px';
+document.getElementById('fire').style.left = fireStartX + 'px';
+document.getElementById('water').style.top = waterStartY + 'px';
+document.getElementById('water').style.left = waterStartX + 'px';
