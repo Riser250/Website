@@ -1,7 +1,4 @@
-// JavaScript code (game.js)
-
-document.addEventListener('keydown', movePlayer);
-document.getElementById('restart-btn').addEventListener('click', restartGame);
+// JavaScript code
 
 let fireWins = false;
 let waterWins = false;
@@ -23,11 +20,12 @@ const goalFireY = 200;  // Fire's goal moves 200px down from the top
 const goalWaterX = gameWidth - 300; // Water's goal moves 300px to the left from the right
 const goalWaterY = 200;  // Water's goal moves 200px up from the bottom
 
-function checkWin(player, goal, playerName) {
+// Check for a win when a player touches their goal
+function checkWin(player, goal) {
     const playerRect = player.getBoundingClientRect();
     const goalRect = goal.getBoundingClientRect();
 
-    // Check for overlap (i.e., the player reaches the goal area)
+    // Check if player has reached the goal area
     return (
         playerRect.left < goalRect.right &&
         playerRect.right > goalRect.left &&
@@ -36,6 +34,7 @@ function checkWin(player, goal, playerName) {
     );
 }
 
+// Move players based on keypresses
 function movePlayer(event) {
     let fire = document.getElementById('fire');
     let water = document.getElementById('water');
@@ -93,26 +92,26 @@ function movePlayer(event) {
     }
 
     // Check if Fire or Water reached their goal
-    if (checkWin(fire, goalFire, 'fire')) {
+    if (checkWin(fire, goalFire)) {
         fireWins = true;
         updateStatus('Fire Wins!');
         showRestartButton();
     }
 
-    if (checkWin(water, goalWater, 'water')) {
+    if (checkWin(water, goalWater)) {
         waterWins = true;
         updateStatus('Water Wins!');
         showRestartButton();
     }
 }
 
-// Updating the status div when someone wins
+// Update the status message when someone wins
 function updateStatus(message) {
     document.getElementById('status').textContent = message;
     document.getElementById('status').classList.add('winner');
 }
 
-// Show Restart Button when a player wins
+// Show the Restart button
 function showRestartButton() {
     document.getElementById('restart-btn').style.display = 'block';
 }
@@ -131,14 +130,18 @@ function restartGame() {
     document.getElementById('restart-btn').style.display = 'none';
 }
 
-// Initial spawn positions
+// Initial positions of fire and water players
 document.getElementById('fire').style.top = fireStartY + 'px';
 document.getElementById('fire').style.left = fireStartX + 'px';
 document.getElementById('water').style.top = waterStartY + 'px';
 document.getElementById('water').style.left = waterStartX + 'px';
 
-// Initial goal positions
+// Initial positions of the goals
 document.getElementById('goal-fire').style.top = goalFireY + 'px';
 document.getElementById('goal-fire').style.left = goalFireX + 'px';
 document.getElementById('goal-water').style.top = goalWaterY + 'px';
 document.getElementById('goal-water').style.left = goalWaterX + 'px';
+
+// Event listeners
+document.addEventListener('keydown', movePlayer);
+document.getElementById('restart-btn').addEventListener('click', restartGame);
