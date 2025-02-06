@@ -115,6 +115,27 @@
         .instructions span {
             color: #FFD700;
         }
+
+        /* Restart Button */
+        #restart-btn {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            background-color: #32CD32; /* Lime Green */
+            color: white;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            display: none;
+        }
+
+        #restart-btn:hover {
+            background-color: #228B22;
+        }
+
     </style>
 </head>
 <body>
@@ -128,6 +149,7 @@
     <div class="instructions">
         <span>Arrow Keys</span> to move <span>Fire</span> & <span>WASD</span> to move <span>Water</span>
     </div>
+    <button id="restart-btn">Restart Game</button>
 
     <script src="js/game.js"></script>
 </body>
