@@ -4,66 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fire and Water Game</title>
-    <style>
-        /* CSS Styles */
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f4f4f4;
-            margin: 0;
-        }
-
-        #game-container {
-            position: relative;
-            width: 800px;
-            height: 400px;
-            background-color: #e0e0e0;
-            border: 2px solid #333;
-        }
-
-        .player {
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-        }
-
-        #fire {
-            background-color: red;
-        }
-
-        #water {
-            background-color: blue;
-        }
-
-        .goal {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background-color: yellow;
-            opacity: 0.7;
-        }
-
-        #goal-fire {
-            top: 20px;
-            left: 20px;
-        }
-
-        #goal-water {
-            bottom: 20px;
-            right: 20px;
-        }
-    </style>
 </head>
 <body>
-    <div id="game-container">
-        <div id="fire" class="player"></div>
-        <div id="water" class="player"></div>
-        <div id="goal-fire" class="goal"></div>
-        <div id="goal-water" class="goal"></div>
+    <div id="game-container" style="position: relative; width: 800px; height: 400px; background-color: #e0e0e0; border: 2px solid #333;">
+        <div id="fire" class="player" style="position: absolute; width: 40px; height: 40px; border-radius: 50%; background-color: red;"></div>
+        <div id="water" class="player" style="position: absolute; width: 40px; height: 40px; border-radius: 50%; background-color: blue;"></div>
+        <div id="goal-fire" class="goal" style="position: absolute; width: 50px; height: 50px; background-color: yellow; opacity: 0.7; top: 20px; left: 20px;"></div>
+        <div id="goal-water" class="goal" style="position: absolute; width: 50px; height: 50px; background-color: yellow; opacity: 0.7; bottom: 20px; right: 20px;"></div>
     </div>
 
     <!-- Linking to the external JavaScript file -->
