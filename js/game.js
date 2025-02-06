@@ -1,62 +1,35 @@
-// Game Logic
-const fire = document.getElementById('fire');
-const water = document.getElementById('water');
-const goalFire = document.getElementById('goal-fire');
-const goalWater = document.getElementById('goal-water');
+document.addEventListener('keydown', movePlayer);
 
-let firePosition = { x: 50, y: 150 };
-let waterPosition = { x: 500, y: 150 };
+function movePlayer(event) {
+    let fire = document.getElementById('fire');
+    let water = document.getElementById('water');
 
-// Key movement controls
-const moveSpeed = 10;
+    const step = 10;
 
-// Listen for keyboard events to move players
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'ArrowUp') {
-        if (firePosition.x === 50 && firePosition.y > 0) firePosition.y -= moveSpeed;
-        if (waterPosition.x === 500 && waterPosition.y > 0) waterPosition.y -= moveSpeed;
+    switch(event.key) {
+        case 'ArrowUp':
+            fire.style.top = (parseInt(fire.style.top || 0) - step) + 'px';
+            break;
+        case 'ArrowDown':
+            fire.style.top = (parseInt(fire.style.top || 0) + step) + 'px';
+            break;
+        case 'ArrowLeft':
+            fire.style.left = (parseInt(fire.style.left || 0) - step) + 'px';
+            break;
+        case 'ArrowRight':
+            fire.style.left = (parseInt(fire.style.left || 0) + step) + 'px';
+            break;
+        case 'w':
+            water.style.top = (parseInt(water.style.top || 0) - step) + 'px';
+            break;
+        case 's':
+            water.style.top = (parseInt(water.style.top || 0) + step) + 'px';
+            break;
+        case 'a':
+            water.style.left = (parseInt(water.style.left || 0) - step) + 'px';
+            break;
+        case 'd':
+            water.style.left = (parseInt(water.style.left || 0) + step) + 'px';
+            break;
     }
-    if (event.key === 'ArrowDown') {
-        if (firePosition.x === 50 && firePosition.y < 350) firePosition.y += moveSpeed;
-        if (waterPosition.x === 500 && waterPosition.y < 350) waterPosition.y += moveSpeed;
-    }
-    if (event.key === 'ArrowLeft') {
-        if (firePosition.x > 0) firePosition.x -= moveSpeed;
-        if (waterPosition.x > 0) waterPosition.x -= moveSpeed;
-    }
-    if (event.key === 'ArrowRight') {
-        if (firePosition.x < 550) firePosition.x += moveSpeed;
-        if (waterPosition.x < 550) waterPosition.x += moveSpeed;
-    }
-
-    // Update positions of players based on key press
-    updatePositions();
-    checkGoal();
-});
-
-function updatePositions() {
-    fire.style.left = `${firePosition.x}px`;
-    fire.style.top = `${firePosition.y}px`;
-    water.style.left = `${waterPosition.x}px`;
-    water.style.top = `${waterPosition.y}px`;
-}
-
-function checkGoal() {
-    // Check if Fire reaches the goal
-    if (firePosition.x === 50 && firePosition.y === 300) {
-        alert("Fire reached its goal!");
-        resetGame();
-    }
-
-    // Check if Water reaches the goal
-    if (waterPosition.x === 500 && waterPosition.y === 300) {
-        alert("Water reached its goal!");
-        resetGame();
-    }
-}
-
-function resetGame() {
-    firePosition = { x: 50, y: 150 };
-    waterPosition = { x: 500, y: 150 };
-    updatePositions();
 }
