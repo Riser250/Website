@@ -5,74 +5,152 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fire and Water Game</title>
     <style>
-        /* CSS Styles */
-        #game-container {
-            width: 600px;
-            height: 400px;
-            border: 2px solid #000;
-            position: relative;
-            margin: 20px auto;
+        /* General Page Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e1e1e1;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
         }
-        #fire, #water {
+
+        #game-container {
+            position: relative;
+            width: 800px;
+            height: 400px;
+            background-color: #87CEEB; /* Sky Blue Background */
+            border: 3px solid #333;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Styling for Players */
+        .player {
             position: absolute;
             width: 40px;
             height: 40px;
             border-radius: 50%;
+            transition: all 0.1s ease-in-out;
         }
+
         #fire {
-            background-color: red;
+            background-color: #FF4500; /* Fire Red */
+            box-shadow: 0 0 10px rgba(255, 69, 0, 0.8); /* Glowing effect */
         }
+
         #water {
-            background-color: blue;
+            background-color: #1E90FF; /* Deep Sky Blue */
+            box-shadow: 0 0 10px rgba(30, 144, 255, 0.8); /* Glowing effect */
         }
-        #goal-fire, #goal-water {
+
+        /* Styling for Goals */
+        .goal {
             position: absolute;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            background-color: #FFD700; /* Gold */
+            border-radius: 10px;
+            opacity: 0.7;
+            transition: transform 0.2s ease-in-out;
         }
+
         #goal-fire {
-            background-color: red; /* Fire goal is red */
+            top: 20px;
+            left: 20px;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
         }
+
         #goal-water {
-            background-color: blue; /* Water goal is blue */
+            bottom: 20px;
+            right: 20px;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
         }
+
+        /* Status Display */
         #status {
+            position: absolute;
+            top: 10px;
+            width: 100%;
             text-align: center;
-            margin-top: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
         }
+
+        /* Add some cool effects for winning */
+        .winner {
+            color: #fff;
+            font-size: 36px;
+            text-shadow: 0 0 20px rgba(255, 69, 0, 0.8), 0 0 20px rgba(30, 144, 255, 0.8);
+            animation: winnerAnimation 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes winnerAnimation {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.2);
+                opacity: 0.7;
+            }
+        }
+
+        /* Centered Container with Instructions */
+        .instructions {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 18px;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .instructions span {
+            color: #FFD700;
+        }
+
+        /* Restart Button */
         #restart-btn {
-            display: none;
-            text-align: center;
-            margin-top: 10px;
-            background-color: #4CAF50;
-            color: white;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
             padding: 10px 20px;
+            background-color: #32CD32; /* Lime Green */
+            color: white;
+            border: none;
+            font-size: 18px;
             cursor: pointer;
             border-radius: 5px;
+            display: none;
         }
+
         #restart-btn:hover {
-            background-color: #45a049;
+            background-color: #228B22;
         }
+
     </style>
 </head>
 <body>
+    <div id="status">Welcome to the Fire and Water Game!</div>
+    <div id="game-container">
+        <div id="fire" class="player"></div>
+        <div id="water" class="player"></div>
+        <div id="goal-fire" class="goal"></div>
+        <div id="goal-water" class="goal"></div>
+    </div>
+    <div class="instructions">
+        <span>Arrow Keys</span> to move <span>Fire</span> & <span>WASD</span> to move <span>Water</span>
+    </div>
+    <button id="restart-btn">Restart Game</button>
 
-<div id="game-container">
-    <!-- Game Elements -->
-    <div id="fire"></div>
-    <div id="water"></div>
-
-    <!-- Goal Elements -->
-    <div id="goal-fire"></div>
-    <div id="goal-water"></div>
-</div>
-
-<!-- Status and Restart Button -->
-<div id="status">Welcome to the Fire and Water Game!</div>
-<button id="restart-btn">Restart</button>
-
-<script src="js/game.js"></script>
-
+    <script src="js/game.js"></script>
 </body>
 </html>
